@@ -12,3 +12,5 @@
 */
 
 Route::get('/permiso', 'PermisoController@index');
+//Route::get('/', 'InicioController@index')->name('inicio');
+Route::get('/', 'InicioController@index');
