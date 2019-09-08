@@ -14,3 +14,33 @@
 Route::get('/permiso', 'PermisoController@index');
 //Route::get('/', 'InicioController@index')->name('inicio');
 Route::get('/', 'InicioController@index');
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    
+
+    /*RUTAS DE PERMISO*/
+    Route::get('permiso', 'PermisoController@index')->name('permiso');
+    Route::get('permiso/crear', 'PermisoController@crear')->name('crear_permiso');
+    Route::post('permiso', 'PermisoController@guardar')->name('guardar_permiso');
+    Route::get('permiso/{id}/editar', 'PermisoController@editar')->name('editar_permiso');
+    Route::put('permiso/{id}', 'PermisoController@actualizar')->name('actualizar_permiso');
+    Route::delete('permiso/{id}', 'PermisoController@eliminar')->name('eliminar_permiso');
+
+    /*RUTAS DE MENUS*/
+    Route::get('menu', 'MenuController@index')->name('menu');
+    Route::get('menu/crear', 'MenuController@crear')->name('crear_menu');
+    Route::post('menu', 'MenuController@guardar')->name('guardar_menu');
+    Route::get('menu/{id}/editar', 'MenuController@editar')->name('editar_menu');
+    Route::put('menu/{id}', 'MenuController@actualizar')->name('actualizar_menu');
+    Route::get('menu/{id}/eliminar', 'MenuController@eliminar')->name('eliminar_menu');
+    Route::post('menu/guardar-orden', 'MenuController@guardarOrden')->name('guardar_orden');
+
+    /*RUTAS DE ROL*/
+    Route::get('rol', 'RolController@index')->name('rol');
+    Route::get('rol/crear', 'RolController@crear')->name('crear_rol');
+    Route::post('rol', 'RolController@guardar')->name('guardar_rol');
+    Route::get('rol/{id}/editar', 'RolController@editar')->name('editar_rol');
+    Route::put('rol/{id}', 'RolController@actualizar')->name('actualizar_rol');
+    Route::delete('rol/{id}/eliminar', 'RolController@eliminar')->name('eliminar_rol');
+
+});
