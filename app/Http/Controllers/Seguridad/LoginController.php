@@ -34,11 +34,11 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user){
         $roles = $user->roles()->where('estado', 1)->get();
-        if ($roles->isNotEmpy()) {
-            $roles->setSession($roles->toArray());
+        if ($roles->isNotEmpty()) {
+            $user->setSession($roles->toArray());
         } else {
             $this->guard()->logout();
-            $request->session->invalidate();
+            $request->session()->invalidate();
             return redirect('seguridad/login')->withErrors(['error' => 'Este usuario no tiene un rol activo']);
         }
         
